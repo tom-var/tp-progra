@@ -5,7 +5,7 @@
 #include <stdlib.h>
 
 #include "mapa.h"
-
+#include "cola.h"
 
 
 #endif // MAIN_H_INCLUDED
