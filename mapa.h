@@ -13,6 +13,9 @@
 #define FANTASMA 'F'
 #define PREMIO 'P'
 #define VIDA 'V'
+#define IZQ -1
+#define ABAJO 0
+#define DER 1
 
 typedef struct mapa
 {
