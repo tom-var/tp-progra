@@ -1,16 +1,4 @@
 #include "mapa.h"
-//typedef struct mapa
-//{
-//    unsigned    filas,
-//                columnas,
-//                vidasInicio,
-//                maxFantasmas,
-//                maxPremios,
-//                maxVidasExtras;
-//    char *mapArray;
-//}sMapa;
-
-
 //Generación del mapa:
 //Primer pasada
 // Despues de generar las paredes que van a delimitar el mapa
@@ -33,26 +21,32 @@ int aleatorio_entre(int min, int max)
     return min + rand() % (max - min + 1);
 }
 
+int cargar_mapa(sMapa *mapa, FILE *archParametros)
+{
+    char bfStr[25];
+    int bffr;
+    fscanf(archParametros, "%s%i", bfStr, &mapa->filas);
+    fscanf(archParametros, "%s%i", bfStr, &mapa->columnas);
+    fscanf(archParametros, "%s%i", bfStr, &mapa->vidasInicio);
+    fscanf(archParametros, "%s%i", bfStr, &mapa->maxFantasmas);
+    fscanf(archParametros, "%s%i", bfStr, &mapa->maxPremios);
+    fscanf(archParametros, "%s%i", bfStr, &mapa->maxVidasExtras);
+    return 1;
+}
+
 int generar_mapa(sMapa *mapa)
 {
     int i, j, n;
     srand(time(NULL));
-    mapa->filas = 15;
-    mapa->columnas = 15;
-    mapa->maxFantasmas = 7;
-    mapa->maxPremios = 1;
-    mapa->maxVidasExtras = 2;
-    mapa->vidasInicio = 3;
     int entrada = aleatorio_entre(1, mapa->columnas - 2);
 
-    mapa->mapArray = (char**)malloc(mapa->filas * sizeof(char*));
-//    mapa->mapArray = (char**)calloc(mapa->columnas, sizeof(char*));
+    //INICIALIZAR ARRAY DEL MAPA
+    //TO DO: Validar que haya asignado memoria correctamente
+    mapa->mapArray = (char**)malloc(mapa->columnas * sizeof(char*));
     for (i = 0; i < mapa->columnas; i++)
     {
-        mapa->mapArray[i] = (char*)malloc(mapa->columnas * sizeof(char));
-//        mapa->mapArray[i] = (char*)calloc(mapa->filas, sizeof(char));
+        mapa->mapArray[i] = (char*)malloc(mapa->filas * sizeof(char));
     }
-
 
     //Generar paredes
     for(i = 0; i < mapa->columnas; i++)
@@ -65,11 +59,13 @@ int generar_mapa(sMapa *mapa)
         mapa->mapArray[0][i] = PARED;
         mapa->mapArray[mapa->columnas - 1][i] = PARED;
     }
+
     //Elegir entrada
     mapa->mapArray[entrada][0] = ENTRADA;
     mapa->mapArray[entrada][1] = CAMINO;
     j = entrada;
     i = 1;
+    //Generacion del camino principal, esto garantiza que haya una solucion al laberinto
     while(i < mapa->filas - 1)
     {
         n = aleatorio_entre(IZQ, DER);
@@ -80,7 +76,7 @@ int generar_mapa(sMapa *mapa)
         }
         else
         {
-            while(mapa->mapArray[j + n][i] != PARED && aleatorio_entre(0, 10) != 0)
+            while(mapa->mapArray[j + n][i] != PARED && aleatorio_entre(0, 10) != 0) //Los parametros de la segunda condicion determinan la frecuencia en la que se "baja" antes de llegar a una pared
             {
                 j += n;
                 mapa->mapArray[j][i] = CAMINO;
@@ -111,7 +107,7 @@ int generar_mapa(sMapa *mapa)
             }
         }
     }
-        for (i = 1; i < mapa->columnas - 1; i++)
+    for (i = 1; i < mapa->columnas - 1; i++)
     {
         for (j = 1; j < mapa->filas - 1; j++)
         {
@@ -145,12 +141,7 @@ void mostrar_mapa(sMapa *mapa)
     for (i = 0; i < mapa->filas; i++)
     {
         for (j = 0; j < mapa->columnas; j++)
-        {
-            if (mapa->mapArray[j][i] == 0)
-                printf("_");
-            else
-                printf("%c", mapa->mapArray[j][i]);
-        }
+            printf("%c", mapa->mapArray[j][i]);
         printf("\n");
     }
 }
