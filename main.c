@@ -12,5 +12,8 @@ int main()
 
     generar_mapa(&miMapa);
     mostrar_mapa(&miMapa);
+    FILE *mapaArch = fopen("laberinto.txt", "wt");
+    guardar_mapa(&miMapa, mapaArch);
+    liberar_mapa(&miMapa);
     return 0;
 }

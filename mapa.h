@@ -6,6 +6,8 @@
 #include <math.h>
 #include <time.h>
 
+#define SIN_MEM 0
+
 #define PARED '#'
 #define CAMINO '.'
 #define ENTRADA 'E'
@@ -35,5 +37,8 @@ int generar_mapa(sMapa *mapa);
 
 void mostrar_mapa(sMapa *mapa);
 
+int guardar_mapa(sMapa *mapa, FILE *mapaTXT);
+
+void liberar_mapa(sMapa *mapa);
 
 #endif // MAPA_H_INCLUDED
