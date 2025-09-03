@@ -17,7 +17,6 @@
 
 int aleatorio_entre(int min, int max) // Posible optimizacion pasar a una macro?
 {
-//    srand(time(NULL));
     return min + rand() % (max - min + 1);
 }
 
@@ -40,7 +39,6 @@ int generar_mapa(sMapa *mapa)
 
     //INICIALIZAR ARRAY DEL MAPA
     mapa->mapArray = (char**)malloc(mapa->filas * sizeof(char*));
-//    mapa->mapArray = (char**)calloc(mapa->filas, sizeof(char*));
     if (mapa->mapArray == NULL)
     {
         return SIN_MEM;
@@ -48,7 +46,6 @@ int generar_mapa(sMapa *mapa)
     for (i = 0; i < mapa->filas; i++)
     {
         mapa->mapArray[i] = (char*)malloc(mapa->columnas * sizeof(char));
-//        mapa->mapArray[i] = (char*)calloc(mapa->columnas, sizeof(char));
         if(mapa->mapArray[i] == NULL)
         {
             for (; i > 0; i--)
@@ -59,6 +56,7 @@ int generar_mapa(sMapa *mapa)
         return SIN_MEM;
         }
     }
+
     //Generar paredes
     for(i = 0; i < mapa->filas; i++)
     {
@@ -77,7 +75,6 @@ int generar_mapa(sMapa *mapa)
     mapa->mapArray[1][entrada] = CAMINO;
     j = entrada;
     i = 1;
-    printf("Entrada y salida\n");
 
     //Generacion del camino principal, esto garantiza que haya una solucion al laberinto
     while(i < mapa->filas - 1)
@@ -90,26 +87,24 @@ int generar_mapa(sMapa *mapa)
         }
         else
         {
-            while(mapa->mapArray[i][j+n] != PARED && aleatorio_entre(0, 10) != 0) //Los parametros de la segunda condicion determinan la frecuencia en la que se "baja" antes de llegar a una pared
+            while(mapa->mapArray[i][j+n] != PARED && aleatorio_entre(0, 10) != 1) //Los parametros de la segunda condicion determinan la frecuencia en la que se "baja" antes de llegar a una pared
             {
                 j += n;
                 mapa->mapArray[i][j] = CAMINO;
-
             }
             i++;
             mapa->mapArray[i][j] = CAMINO;
-
         }
     }
     mapa->mapArray[i][j] = SALIDA;
 
     //Se recorre el mapa y se llena con paredes y camino
-    //
+    //Se puede modificar las posibilidades para variar la distribucion de paredes y caminos
     for (i = 1; i < mapa->filas - 1; i++)
     {
         for (j = 1; j < mapa->columnas - 1; j++)
         {
-            if (mapa->mapArray[i][j] != '.')
+            if (mapa->mapArray[i][j] != '.') //chequea si no es parte del camino principal
             {
                 n = aleatorio_entre(0,100);
                 if (n >= 0 && n < 25)
@@ -146,12 +141,12 @@ int generar_mapa(sMapa *mapa)
                     mapa->mapArray[i][j] = FANTASMA;
                     mapa->maxFantasmas--;
                 }
-                if (n >= 10 && n < 20 && mapa->maxPremios > 0)
+                else if (n >= 10 && n < 20 && mapa->maxPremios > 0)
                 {
                     mapa->mapArray[i][j] = PREMIO;
                     mapa->maxPremios--;
                 }
-                if (n >= 20 && n < 30 && mapa->maxVidasExtras > 0)
+                else if (n >= 20 && n < 30 && mapa->maxVidasExtras > 0)
                 {
                     mapa->mapArray[i][j] = VIDA;
                     mapa->maxVidasExtras--;
@@ -168,15 +163,7 @@ void mostrar_mapa(sMapa *mapa)
     for (i = 0; i < mapa->filas; i++)
     {
         for (j = 0; j < mapa->columnas; j++)
-//            printf("%c", mapa->mapArray[i][j]);
-            {
-//                if (mapa->mapArray[i][j] == 0)
-//                {
-//                    printf("_", mapa->mapArray[i][j]);
-//                }
-//                else
-                    printf("%c", mapa->mapArray[i][j]);
-            }
+            printf("%c", mapa->mapArray[i][j]);
         printf("\n");
     }
 }
