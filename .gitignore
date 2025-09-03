@@ -1,12 +1,6 @@
-<<<<<<< HEAD
 obj/
 bin/
 tp.cbp
 tp.depend
+tp.layout
 laberinto.txt
-=======
-obj/
-bin/
-tp.cbp
-tp.depend
->>>>>>> 732072cc66dcd2375bec312a73a2c10bc760cd20
