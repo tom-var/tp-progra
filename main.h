@@ -4,9 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "mapa.h"
-#include "cola.h"
+#include "menu.h"
 
-#define TOUP(X) (((X)>='a'&&(X)<='z')?(X)-32:(X))
 
 #endif // MAIN_H_INCLUDED

@@ -1,0 +1,54 @@
+# depslib dependency file v1.0
+1757516055 source:c:\users\tati\desktop\tp\tp-progra\cola.c
+	"cola.h"
+
+1757516055 c:\users\tati\desktop\tp\tp-progra\cola.h
+	<stdio.h>
+	<stdlib.h>
+	<stddef.h>
+	<string.h>
+
+1757879015 source:c:\users\tati\desktop\tp\tp-progra\main.c
+	"main.h"
+
+1757875320 c:\users\tati\desktop\tp\tp-progra\main.h
+	<stdio.h>
+	<stdlib.h>
+	"menu.h"
+
+1757875330 c:\users\tati\desktop\tp\tp-progra\mapa.h
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+	<time.h>
+
+1757877956 source:c:\users\tati\desktop\tp\tp-progra\mapa.c
+	"mapa.h"
+
+1757879372 source:c:\users\tati\desktop\tp\tp-progra\lista.c
+	"lista.h"
+
+1757879282 c:\users\tati\desktop\tp\tp-progra\lista.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"cola.h"
+
+1757879932 source:c:\users\tati\desktop\tp\tp-progra\menu.c
+	"menu.h"
+
+1757879569 c:\users\tati\desktop\tp\tp-progra\menu.h
+	<stdio.h>
+	<stdlib.h>
+	"mapa.h"
+	"cola.h"
+	"jugador.h"
+	"lista.h"
+
+1757878543 c:\users\tati\desktop\tp\tp-progra\jugador.h
+	"mapa.h"
+	"cola.h"
+
+1757876299 source:c:\users\tati\desktop\tp\tp-progra\jugador.c
+	"jugador.h"
+

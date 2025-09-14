@@ -23,7 +23,7 @@
 #define IZQUIERDA 'A'
 #define DERECHA 'D'
 #define ARRIBA 'W'
-#define ABAJO 'S'
+#define ABAJ 'S'
 
 #define WIN 1
 #define HP 2
@@ -52,8 +52,6 @@ void mostrar_mapa(sMapa *mapa);
 int guardar_mapa(sMapa *mapa, FILE *mapaTXT);
 
 void liberar_mapa(sMapa *mapa);
-
-int mover_entidad(int *fil, int *col, char direccion, sMapa *mapa,int *posInicialY);
 
 
 #endif // MAPA_H_INCLUDED
