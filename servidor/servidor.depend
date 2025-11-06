@@ -1,0 +1,58 @@
+# depslib dependency file v1.0
+1762397137 source:f:\facu\01. algoritmos y estructuras de datos\tp\servidor\main.c
+	"main.h"
+
+1762393524 f:\facu\01. algoritmos y estructuras de datos\tp\servidor\main.h
+	<stdio.h>
+	<stdlib.h>
+	"structs.h"
+	"server.h"
+	"arbol.h"
+
+1762397021 source:f:\facu\01. algoritmos y estructuras de datos\tp\servidor\server.c
+	"server.h"
+
+1762393524 f:\facu\01. algoritmos y estructuras de datos\tp\servidor\server.h
+	<winsock2.h>
+	<string.h>
+	"structs.h"
+	"arbol.h"
+	"indice.h"
+	"lista.h"
+	"cola.h"
+
+1762397123 source:f:\facu\01. algoritmos y estructuras de datos\tp\servidor\arbol.c
+	"arbol.h"
+
+1760246205 f:\facu\01. algoritmos y estructuras de datos\tp\servidor\arbol.h
+	<stdio.h>
+	<stdlib.h>
+
+1762397021 source:f:\facu\01. algoritmos y estructuras de datos\tp\servidor\indice.c
+	"indice.h"
+
+1762393134 f:\facu\01. algoritmos y estructuras de datos\tp\servidor\indice.h
+	"arbol.h"
+	<stdio.h>
+
+1762393776 f:\facu\01. algoritmos y estructuras de datos\tp\servidor\structs.h
+
+1762393836 source:f:\facu\01. algoritmos y estructuras de datos\tp\servidor\lista.c
+	"lista.h"
+
+1762393801 f:\facu\01. algoritmos y estructuras de datos\tp\servidor\lista.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"structs.h"
+
+1762391236 source:f:\facu\01. algoritmos y estructuras de datos\tp\servidor\cola.c
+	"cola.h"
+
+1762393776 f:\facu\01. algoritmos y estructuras de datos\tp\servidor\cola.h
+	<stdio.h>
+	<stdlib.h>
+	<stddef.h>
+	<string.h>
+	"structs.h"
+
